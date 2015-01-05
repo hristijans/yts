@@ -1,0 +1,71 @@
+<ion-view title="Movies">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <h1>Movies</h1>
+<button ng-click="show = !show" class="button button-royal">
+  <span ng-if="show">Hide filter</span>
+  <span ng-if="!show">Show filter</span>
+</button>
+<div ng-show="show">
+<form ng-submit="filter()">
+<div class="list">
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Quality
+    </div>
+    <select ng-init="form.quality = quality[0]" ng-model="form.quality" ng-options="q for q in quality">
+      
+    </select>
+  </label>
+</div>
+<div class="list">
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Genere
+    </div>
+    <select ng-init="form.genere = generes[0]" ng-model="form.genere" ng-options="genere for genere in generes">
+    </select>
+  </label>
+</div>
+<div class="list">
+ <label class="item item-input item-select">
+    <div class="input-label">
+      Order by
+    </div>
+    <select ng-init="form.order = order[0]" ng-model="form.order" ng-options="o for o in order">
+        
+    </select>
+  </label>
+</div>
+     <input type="submit" name="submit" value="Filter"  class="button button-royal"/>
+</form>    
+   
+    
+  Filter
+  
+</button>  
+</div>    
+    
+      
+<div class="list" ng-repeat="m in movies" >
+   
+    
+ <a class="item item-thumbnail-left" href="#/app/movies/{{m.MovieID}}">
+    <img ng-src="{{m.CoverImage}}"/>
+      <h2>Movie Title : {{m.MovieTitle}} (2009)</h2>
+      <p>Quality : {{ m.Quality}}</p>
+      <p>Uploader :  {{m.Uploader}}</p>
+        
+ </a>
+ 
+</div>
+
+<button class="button button-block button-positive" ng-click="next()">
+  Load more
+</button>
+
+  </ion-content>
+
+</ion-view>
